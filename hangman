@@ -1,0 +1,43 @@
+import random
+
+def hangman():
+    """This is a hangman game"""
+    words = ['coronavirus','brandeis','quarantine']
+    life = 10
+    answer = list(words[random.randint(0, len(words))-1])
+    start = list('_'*len(answer))
+    guessed = []
+
+    print(start)
+
+    while life > 0 and '_' in start:
+
+        print('You have ' + str(life)+ ' chances left')
+        guess=input("Guess the letter here!: ")
+        if guess in guessed:
+            while guess in guessed:               
+                print("You already guessed this letter!")
+                print("Try another letter")
+                guess=input("Guess the letter here!: ")
+        guessed.append(guess)
+        
+        if guess in answer:
+
+            for i in range(len(answer)):
+                if guess == answer[i]:
+                    start[i] = guess
+            print("Perfect!")
+            print(start)
+
+        else:
+            print("Wrong")
+            life = life-1
+
+    if life==0:
+        print("Oops...Not your day:(")
+
+    if "_" not in start:
+        print("You very smart! You got it!")
+
+
+hangman()
