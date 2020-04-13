@@ -1,3 +1,5 @@
+"""This script was made from jupyter notebook and then copy/pasted into here"""
+
 import random
 
 def hangman():
